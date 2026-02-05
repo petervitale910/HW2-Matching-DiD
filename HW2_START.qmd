@@ -251,7 +251,7 @@ balanced/imbalanced?
 
 *Response:* The groups (proposed turbines within 3km) are the most
 uneven with \~5.5 thousand observations as a 0 (no) and only 354 as 1
-(yes)
+(yes). The covariates are rather balanced, remaining pretty close throughout. 
 
 **2B.Q2** Describe in your own words why these covariates might be
 expected to confound the treatment estimate:
@@ -667,7 +667,7 @@ error (S.E.) estimates change? Explain why.
 fixed effects analysis in the Stokes (2015) study. Why might the results
 be similar or different?
 
-*Response:* Our results differ from the stokes study because we randomly generated this data, and that will inherently change our data from the observed. 
+*Response:* The results may differ from Stokes (2015) because this model is estimated on a small random subsample of precincts rather than the full dataset, which reduces precision and may yield estimates that are less stable or representative of the full sample. 
 
 **3C.Q4:** In your own words, explain why it is advantageous from a
 causal inference perspective to include year and precinct fixed effects.
