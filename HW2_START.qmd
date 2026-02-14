@@ -234,12 +234,9 @@ confounding variables, which is good in a dataset like this.
 
 ```{r}
 
-match_data %>%
-    select('proposed_turbine_3km', 'log_home_val_07',
-           'p_uni_degree', 'log_median_inc') %>% 
-    tbl_summary(
-        by = proposed_turbine_3km,
-        statistic = c(list(all_continuous() ~ "{mean} ({sd})"))) %>% 
+match_data %>% 
+  tbl_summary(by = proposed_turbine_3km, 
+  include = c(log_home_val_07, p_uni_degree, log_median_inc, log_pop_denc)) %>% 
         modify_header(label ~ "**Covariate**") %>%
   modify_spanning_header(c("stat_1", "stat_2") ~ "**Proposed Turbine**")
     
@@ -251,7 +248,7 @@ balanced/imbalanced?
 
 *Response:* The groups (proposed turbines within 3km) are the most
 uneven with \~5.5 thousand observations as a 0 (no) and only 354 as 1
-(yes). The covariates are rather balanced, remaining pretty close throughout. 
+(yes). The covariates are rather balanced, remaining pretty close throughout. The only covariate with any imballance is log_pop_dencity which has by far the biggest difference between treatment and control.
 
 **2B.Q2** Describe in your own words why these covariates might be
 expected to confound the treatment estimate:
@@ -326,7 +323,7 @@ summary(match_model)
 and smallest `Std. Mean Diff.` before matching. Next, compare
 largest/smallest `Std. Mean Diff.` after matching.
 
-*Response:* Before matching the smallest `Std. Mean Diff.` is `p_uni_degree` at -.05 and the largest is `log_home_val_07` at .11. This changes drastically when matched and actually becomes a -.0093. After treatment the largest `Std. Mean Diff.` is `log_median_inc` at .0002 and the smallest is `log_pop_denc`. But in general all the `Std. Mean Diff.`'s all become **tiny** which is great! 
+*Response:* Before matching the smallest `Std. Mean Diff.` is `p_uni_degree` at -.05 and the largest is `log_pop_denc` at -.88. This changes drastically when matched and actually becomes a -.0093. After treatment the largest `Std. Mean Diff.` is `log_median_inc` at .0002 and the smallest is `log_pop_denc`. But in general all the `Std. Mean Diff.`'s all become **tiny** which is great! 
 
 ------------------------------------------------------------------------
 
@@ -435,7 +432,7 @@ summ(reg_match, model.fit = FALSE)
 **2F.Q1** Have you identified a causal estimate using this approach: Why
 or why not?
 
-*Response:* It seems we have identified a causal estimate, as the low p-value suggests the relationship between proposed turbine development and political change is (statistically significantly) unlikely to be random. This was done after the matching, which adds rigor to our estimate. 
+*Response:* The low p-value suggests the relationship between proposed turbine development and political change is (statistically significantly) unlikely to be random. This was done after the matching, which adds rigor to our estimate. However there may be missing some omitted variables which means we may have not found a true causal relationship. 
 
 **2F.Q2** When using a matching method, what is the main threat to
 causal identification?
@@ -446,7 +443,7 @@ causal identification?
 `Average Treatment for the Treated (ATT)` and explain why this is the
 case relative to estimation of the `Average Treatment Effect (ATE)`.
 
-*Response:* ATT represents the treatment effect of those treated, which were the 354 treated units (matches). The reason that we do not use ATE is if treatment is randomly assigned, but in our case we use the treatment effect for the treated as it is not random or equal. 
+*Response:* ATT represents the treatment effect of those in precints who received a turbine, which were the 354 treated units (matches). The reason that we do not use ATE is if treatment is randomly assigned, but in our case we use the treatment effect for the treated as it is not random or equal. 
 
 ------------------------------------------------------------------------
 
@@ -699,7 +696,7 @@ In panel data settings, why is clustering by precinct important (i.e.,
 `cluster = ~precinct_id`) ?”
 
 *Response (4-6 sentences):*
-The effect of a proposed turbines on liberal voting is a drop of ~ 4%.  This means precincts with proposed wind turbines saw their liberal vote share decrease by about 4 points compared to similar precincts without turbines. This number is very unlikely to be derived from random data, and thus is statistically significant. The reason that it is important to cluster by precinct is because - as stated earlier- precincts can share characteristics which create correlated errors over time. This can skew our results and increase the error (how wrong we are) within our model. 
+The effect of a proposed turbines on liberal voting is a drop of ~ 4 percentage points.  This means precincts with proposed wind turbines saw their liberal vote share decrease by about 4 percentage points compared to similar precincts which had not received turbines. This number is very unlikely to be derived from random data, and thus is statistically significant. The reason that it is important to cluster by precinct is because - as stated earlier- precincts can share characteristics which create correlated errors over time. This can skew our results and increase the error (how wrong we are) within our model. 
 
 ------------------------------------------------------------------------
 
@@ -716,7 +713,7 @@ summary(model3_ff, cluster = ~precinct_id)
 **3E.Q1:** Interpret the `model3_ff` results as clearly and
 **concisely** as you can.
 
-*Response:* The implementation of an operational turbine reduces the liberal percentage of a community by 9%. This expectation is statistically significant, meaning it is likely not due to random chance. 
+*Response:* The implementation of an operational turbine creates a 9 percentage point drop in liberal voting, compared to what precincts which have not received turbines. This expectation is statistically significant, meaning it is likely not due to random chance. 
 
 **3E.Q2:** Why do you think the effect of proposed wind turbines is
 different from operational wind turbines. Develop your own theory about

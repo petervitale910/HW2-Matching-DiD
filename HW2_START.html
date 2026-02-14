@@ -211,10 +211,10 @@ window.Quarto = {
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
-✔ dplyr     1.1.4     ✔ readr     2.1.6
+✔ dplyr     1.2.0     ✔ readr     2.1.6
 ✔ forcats   1.0.0     ✔ stringr   1.6.0
-✔ ggplot2   4.0.1     ✔ tibble    3.3.1
-✔ lubridate 1.9.4     ✔ tidyr     1.3.2
+✔ ggplot2   4.0.2     ✔ tibble    3.3.1
+✔ lubridate 1.9.5     ✔ tidyr     1.3.2
 ✔ purrr     1.2.1     
 ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
 ✖ dplyr::filter() masks stats::filter()
@@ -352,32 +352,29 @@ dbl (15): district_id, change_liberal, proposed_turbine_3km, log_wind_power,...
 <li>Use the <code>tbl_summary()</code> function from the <code>{gtsummary}</code> package.</li>
 </ul>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>match_data <span class="sc">%&gt;%</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(<span class="st">'proposed_turbine_3km'</span>, <span class="st">'log_home_val_07'</span>,</span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>           <span class="st">'p_uni_degree'</span>, <span class="st">'log_median_inc'</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">tbl_summary</span>(</span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">by =</span> proposed_turbine_3km,</span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>        <span class="at">statistic =</span> <span class="fu">c</span>(<span class="fu">list</span>(<span class="fu">all_continuous</span>() <span class="sc">~</span> <span class="st">"{mean} ({sd})"</span>))) <span class="sc">%&gt;%</span> </span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>        <span class="fu">modify_header</span>(label <span class="sc">~</span> <span class="st">"**Covariate**"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">modify_spanning_header</span>(<span class="fu">c</span>(<span class="st">"stat_1"</span>, <span class="st">"stat_2"</span>) <span class="sc">~</span> <span class="st">"**Proposed Turbine**"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>match_data <span class="sc">%&gt;%</span> </span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tbl_summary</span>(<span class="at">by =</span> proposed_turbine_3km, </span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">include =</span> <span class="fu">c</span>(log_home_val_07, p_uni_degree, log_median_inc, log_pop_denc)) <span class="sc">%&gt;%</span> </span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>        <span class="fu">modify_header</span>(label <span class="sc">~</span> <span class="st">"**Covariate**"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">modify_spanning_header</span>(<span class="fu">c</span>(<span class="st">"stat_1"</span>, <span class="st">"stat_2"</span>) <span class="sc">~</span> <span class="st">"**Proposed Turbine**"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
-<div id="jwestznais" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#jwestznais table {
+<div id="qrctpdlopa" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#qrctpdlopa table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#jwestznais thead, #jwestznais tbody, #jwestznais tfoot, #jwestznais tr, #jwestznais td, #jwestznais th {
+#qrctpdlopa thead, #qrctpdlopa tbody, #qrctpdlopa tfoot, #qrctpdlopa tr, #qrctpdlopa td, #qrctpdlopa th {
   border-style: none;
 }
 
-#jwestznais p {
+#qrctpdlopa p {
   margin: 0;
   padding: 0;
 }
 
-#jwestznais .gt_table {
+#qrctpdlopa .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -403,12 +400,12 @@ dbl (15): district_id, change_liberal, proposed_turbine_3km, log_wind_power,...
   border-left-color: #D3D3D3;
 }
 
-#jwestznais .gt_caption {
+#qrctpdlopa .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#jwestznais .gt_title {
+#qrctpdlopa .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -420,7 +417,7 @@ dbl (15): district_id, change_liberal, proposed_turbine_3km, log_wind_power,...
   border-bottom-width: 0;
 }
 
-#jwestznais .gt_subtitle {
+#qrctpdlopa .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -432,7 +429,7 @@ dbl (15): district_id, change_liberal, proposed_turbine_3km, log_wind_power,...
   border-top-width: 0;
 }
 
-#jwestznais .gt_heading {
+#qrctpdlopa .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -444,13 +441,13 @@ dbl (15): district_id, change_liberal, proposed_turbine_3km, log_wind_power,...
   border-right-color: #D3D3D3;
 }
 
-#jwestznais .gt_bottom_border {
+#qrctpdlopa .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#jwestznais .gt_col_headings {
+#qrctpdlopa .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -465,7 +462,7 @@ dbl (15): district_id, change_liberal, proposed_turbine_3km, log_wind_power,...
   border-right-color: #D3D3D3;
 }
 
-#jwestznais .gt_col_heading {
+#qrctpdlopa .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -485,7 +482,7 @@ dbl (15): district_id, change_liberal, proposed_turbine_3km, log_wind_power,...
   overflow-x: hidden;
 }
 
-#jwestznais .gt_column_spanner_outer {
+#qrctpdlopa .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -497,15 +494,15 @@ dbl (15): district_id, change_liberal, proposed_turbine_3km, log_wind_power,...
   padding-right: 4px;
 }
 
-#jwestznais .gt_column_spanner_outer:first-child {
+#qrctpdlopa .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#jwestznais .gt_column_spanner_outer:last-child {
+#qrctpdlopa .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#jwestznais .gt_column_spanner {
+#qrctpdlopa .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -517,11 +514,11 @@ dbl (15): district_id, change_liberal, proposed_turbine_3km, log_wind_power,...
   width: 100%;
 }
 
-#jwestznais .gt_spanner_row {
+#qrctpdlopa .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#jwestznais .gt_group_heading {
+#qrctpdlopa .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -547,7 +544,7 @@ dbl (15): district_id, change_liberal, proposed_turbine_3km, log_wind_power,...
   text-align: left;
 }
 
-#jwestznais .gt_empty_group_heading {
+#qrctpdlopa .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -562,15 +559,15 @@ dbl (15): district_id, change_liberal, proposed_turbine_3km, log_wind_power,...
   vertical-align: middle;
 }
 
-#jwestznais .gt_from_md > :first-child {
+#qrctpdlopa .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#jwestznais .gt_from_md > :last-child {
+#qrctpdlopa .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#jwestznais .gt_row {
+#qrctpdlopa .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -589,7 +586,7 @@ dbl (15): district_id, change_liberal, proposed_turbine_3km, log_wind_power,...
   overflow-x: hidden;
 }
 
-#jwestznais .gt_stub {
+#qrctpdlopa .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -602,7 +599,7 @@ dbl (15): district_id, change_liberal, proposed_turbine_3km, log_wind_power,...
   padding-right: 5px;
 }
 
-#jwestznais .gt_stub_row_group {
+#qrctpdlopa .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -616,15 +613,15 @@ dbl (15): district_id, change_liberal, proposed_turbine_3km, log_wind_power,...
   vertical-align: top;
 }
 
-#jwestznais .gt_row_group_first td {
+#qrctpdlopa .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#jwestznais .gt_row_group_first th {
+#qrctpdlopa .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#jwestznais .gt_summary_row {
+#qrctpdlopa .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -634,16 +631,16 @@ dbl (15): district_id, change_liberal, proposed_turbine_3km, log_wind_power,...
   padding-right: 5px;
 }
 
-#jwestznais .gt_first_summary_row {
+#qrctpdlopa .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#jwestznais .gt_first_summary_row.thick {
+#qrctpdlopa .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#jwestznais .gt_last_summary_row {
+#qrctpdlopa .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -653,7 +650,7 @@ dbl (15): district_id, change_liberal, proposed_turbine_3km, log_wind_power,...
   border-bottom-color: #D3D3D3;
 }
 
-#jwestznais .gt_grand_summary_row {
+#qrctpdlopa .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -663,7 +660,7 @@ dbl (15): district_id, change_liberal, proposed_turbine_3km, log_wind_power,...
   padding-right: 5px;
 }
 
-#jwestznais .gt_first_grand_summary_row {
+#qrctpdlopa .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -673,7 +670,7 @@ dbl (15): district_id, change_liberal, proposed_turbine_3km, log_wind_power,...
   border-top-color: #D3D3D3;
 }
 
-#jwestznais .gt_last_grand_summary_row_top {
+#qrctpdlopa .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -683,11 +680,11 @@ dbl (15): district_id, change_liberal, proposed_turbine_3km, log_wind_power,...
   border-bottom-color: #D3D3D3;
 }
 
-#jwestznais .gt_striped {
+#qrctpdlopa .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#jwestznais .gt_table_body {
+#qrctpdlopa .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -696,7 +693,7 @@ dbl (15): district_id, change_liberal, proposed_turbine_3km, log_wind_power,...
   border-bottom-color: #D3D3D3;
 }
 
-#jwestznais .gt_footnotes {
+#qrctpdlopa .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -710,7 +707,7 @@ dbl (15): district_id, change_liberal, proposed_turbine_3km, log_wind_power,...
   border-right-color: #D3D3D3;
 }
 
-#jwestznais .gt_footnote {
+#qrctpdlopa .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -719,7 +716,7 @@ dbl (15): district_id, change_liberal, proposed_turbine_3km, log_wind_power,...
   padding-right: 5px;
 }
 
-#jwestznais .gt_sourcenotes {
+#qrctpdlopa .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -733,7 +730,7 @@ dbl (15): district_id, change_liberal, proposed_turbine_3km, log_wind_power,...
   border-right-color: #D3D3D3;
 }
 
-#jwestznais .gt_sourcenote {
+#qrctpdlopa .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -741,72 +738,72 @@ dbl (15): district_id, change_liberal, proposed_turbine_3km, log_wind_power,...
   padding-right: 5px;
 }
 
-#jwestznais .gt_left {
+#qrctpdlopa .gt_left {
   text-align: left;
 }
 
-#jwestznais .gt_center {
+#qrctpdlopa .gt_center {
   text-align: center;
 }
 
-#jwestznais .gt_right {
+#qrctpdlopa .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#jwestznais .gt_font_normal {
+#qrctpdlopa .gt_font_normal {
   font-weight: normal;
 }
 
-#jwestznais .gt_font_bold {
+#qrctpdlopa .gt_font_bold {
   font-weight: bold;
 }
 
-#jwestznais .gt_font_italic {
+#qrctpdlopa .gt_font_italic {
   font-style: italic;
 }
 
-#jwestznais .gt_super {
+#qrctpdlopa .gt_super {
   font-size: 65%;
 }
 
-#jwestznais .gt_footnote_marks {
+#qrctpdlopa .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#jwestznais .gt_asterisk {
+#qrctpdlopa .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#jwestznais .gt_indent_1 {
+#qrctpdlopa .gt_indent_1 {
   text-indent: 5px;
 }
 
-#jwestznais .gt_indent_2 {
+#qrctpdlopa .gt_indent_2 {
   text-indent: 10px;
 }
 
-#jwestznais .gt_indent_3 {
+#qrctpdlopa .gt_indent_3 {
   text-indent: 15px;
 }
 
-#jwestznais .gt_indent_4 {
+#qrctpdlopa .gt_indent_4 {
   text-indent: 20px;
 }
 
-#jwestznais .gt_indent_5 {
+#qrctpdlopa .gt_indent_5 {
   text-indent: 25px;
 }
 
-#jwestznais .katex-display {
+#qrctpdlopa .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#jwestznais div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#qrctpdlopa div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -834,22 +831,27 @@ N = 354<span class="gt_footnote_marks" style="white-space:nowrap;font-style:ital
 <tbody class="gt_table_body">
 <tr class="odd">
 <td class="gt_row gt_left" headers="label">log_home_val_07</td>
-<td class="gt_row gt_center" headers="stat_1">12.26 (0.37)</td>
-<td class="gt_row gt_center" headers="stat_2">12.29 (0.29)</td>
+<td class="gt_row gt_center" headers="stat_1">12.28 (12.04, 12.49)</td>
+<td class="gt_row gt_center" headers="stat_2">12.33 (12.10, 12.49)</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_left" headers="label">p_uni_degree</td>
-<td class="gt_row gt_center" headers="stat_1">0.17 (0.12)</td>
-<td class="gt_row gt_center" headers="stat_2">0.13 (0.09)</td>
+<td class="gt_row gt_center" headers="stat_1">0.15 (0.08, 0.23)</td>
+<td class="gt_row gt_center" headers="stat_2">0.12 (0.07, 0.17)</td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_left" headers="label">log_median_inc</td>
-<td class="gt_row gt_center" headers="stat_1">10.32 (0.22)</td>
-<td class="gt_row gt_center" headers="stat_2">10.31 (0.19)</td>
+<td class="gt_row gt_center" headers="stat_1">10.32 (10.18, 10.48)</td>
+<td class="gt_row gt_center" headers="stat_2">10.31 (10.19, 10.43)</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="label">log_pop_denc</td>
+<td class="gt_row gt_center" headers="stat_1">5.67 (3.18, 7.21)</td>
+<td class="gt_row gt_center" headers="stat_2">3.12 (2.37, 4.44)</td>
 </tr>
 </tbody><tfoot>
 <tr class="gt_footnotes odd">
-<td colspan="3" class="gt_footnote"><span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;line-height:0;"><sup>1</sup></span> Mean (SD)</td>
+<td colspan="3" class="gt_footnote"><span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;line-height:0;"><sup>1</sup></span> Median (Q1, Q3)</td>
 </tr>
 </tfoot>
 
@@ -859,7 +861,7 @@ N = 354<span class="gt_footnote_marks" style="white-space:nowrap;font-style:ital
 </div>
 </div>
 <p><strong>2B.Q1</strong> Summarize the table output: Which covariates look balanced/imbalanced?</p>
-<p><em>Response:</em> The groups (proposed turbines within 3km) are the most uneven with ~5.5 thousand observations as a 0 (no) and only 354 as 1 (yes). The covariates are rather balanced, remaining pretty close throughout.</p>
+<p><em>Response:</em> The groups (proposed turbines within 3km) are the most uneven with ~5.5 thousand observations as a 0 (no) and only 354 as 1 (yes). The covariates are rather balanced, remaining pretty close throughout. The only covariate with any imballance is log_pop_dencity which has by far the biggest difference between treatment and control.</p>
 <p><strong>2B.Q2</strong> Describe in your own words why these covariates might be expected to confound the treatment estimate:</p>
 <p><em>Response (2-4 sentences):</em> These covariates may be expected to confound the treatment estimate for a variety of reasons. Log home value, income, and education are all signifiers that tie to both social and political leanings. Furthermore, issues arise dealing with non-uniform deployal of turbines in low income communities <span class="citation" data-cites="lindvall2023">(<a href="#ref-lindvall2023" role="doc-biblioref">Lindvall 2023</a>)</span>. This can lead to a major confounding in our treatment effect, so controlling for it will be necessary.</p>
 <hr>
@@ -955,7 +957,7 @@ Discarded       0       0</code></pre>
 </div>
 </div>
 <p><strong>2C.Q1</strong> Using the <code>summary()</code> output: Which covariate had the largest and smallest <code>Std. Mean Diff.</code> before matching. Next, compare largest/smallest <code>Std. Mean Diff.</code> after matching.</p>
-<p><em>Response:</em> Before matching the smallest <code>Std. Mean Diff.</code> is <code>p_uni_degree</code> at -.05 and the largest is <code>log_home_val_07</code> at .11. This changes drastically when matched and actually becomes a -.0093. After treatment the largest <code>Std. Mean Diff.</code> is <code>log_median_inc</code> at .0002 and the smallest is <code>log_pop_denc</code>. But in general all the <code>Std. Mean Diff.</code>’s all become <strong>tiny</strong> which is great!</p>
+<p><em>Response:</em> Before matching the smallest <code>Std. Mean Diff.</code> is <code>p_uni_degree</code> at -.05 and the largest is <code>log_pop_denc</code> at -.88. This changes drastically when matched and actually becomes a -.0093. After treatment the largest <code>Std. Mean Diff.</code> is <code>log_median_inc</code> at .0002 and the smallest is <code>log_pop_denc</code>. But in general all the <code>Std. Mean Diff.</code>’s all become <strong>tiny</strong> which is great!</p>
 <hr>
 <section id="d.-create-a-love-plot-using-love.plot" class="level4">
 <h4 class="anchored" data-anchor-id="d.-create-a-love-plot-using-love.plot">2D. Create a “love plot” using <code>love.plot()</code> ❤️</h4>
@@ -1133,11 +1135,11 @@ Unmatched    5265       0</code></pre>
 </div>
 </div>
 <p><strong>2F.Q1</strong> Have you identified a causal estimate using this approach: Why or why not?</p>
-<p><em>Response:</em> It seems we have identified a causal estimate, as the low p-value suggests the relationship between proposed turbine development and political change is (statistically significantly) unlikely to be random. This was done after the matching, which adds rigor to our estimate.</p>
+<p><em>Response:</em> The low p-value suggests the relationship between proposed turbine development and political change is (statistically significantly) unlikely to be random. This was done after the matching, which adds rigor to our estimate. However there may be missing some omitted variables which means we may have not found a true causal relationship.</p>
 <p><strong>2F.Q2</strong> When using a matching method, what is the main threat to causal identification?</p>
 <p><em>Response:</em> The matching method can only match the covariates you give it, therefore omitted variable bias is still posible and remains a threat to causal identification.</p>
 <p><strong>2F.Q3</strong> Describe why the treatment estimate represents the <code>Average Treatment for the Treated (ATT)</code> and explain why this is the case relative to estimation of the <code>Average Treatment Effect (ATE)</code>.</p>
-<p><em>Response:</em> ATT represents the treatment effect of those treated, which were the 354 treated units (matches). The reason that we do not use ATE is if treatment is randomly assigned, but in our case we use the treatment effect for the treated as it is not random or equal.</p>
+<p><em>Response:</em> ATT represents the treatment effect of those in precints who received a turbine, which were the 354 treated units (matches). The reason that we do not use ATE is if treatment is randomly assigned, but in our case we use the treatment effect for the treated as it is not random or equal.</p>
 <hr>
 </section>
 </section>
@@ -2065,7 +2067,7 @@ RMSE: 0.070481     Adj. R2: 0.624835
 </div>
 <p><strong>3D.Q1:</strong> Interpret the model results and translate findings to be clear to an audience that may not have a background in causal inference (Econometrics) methods.</p>
 <p>In panel data settings, why is clustering by precinct important (i.e., <code>cluster = ~precinct_id</code>) ?”</p>
-<p><em>Response (4-6 sentences):</em> The effect of a proposed turbines on liberal voting is a drop of ~ 4%. This means precincts with proposed wind turbines saw their liberal vote share decrease by about 4 points compared to similar precincts without turbines. This number is very unlikely to be derived from random data, and thus is statistically significant. The reason that it is important to cluster by precinct is because - as stated earlier- precincts can share characteristics which create correlated errors over time. This can skew our results and increase the error (how wrong we are) within our model.</p>
+<p><em>Response (4-6 sentences):</em> The effect of a proposed turbines on liberal voting is a drop of ~ 4 percentage points. This means precincts with proposed wind turbines saw their liberal vote share decrease by about 4 percentage points compared to similar precincts which had not received turbines. This number is very unlikely to be derived from random data, and thus is statistically significant. The reason that it is important to cluster by precinct is because - as stated earlier- precincts can share characteristics which create correlated errors over time. This can skew our results and increase the error (how wrong we are) within our model.</p>
 <hr>
 </section>
 <section id="e.-estimate-the-treatment-effect-of-operational-wind-turbines-on-incumbent-vote-share.-use-the-same-approach-as-the-previous-model." class="level4">
@@ -2089,7 +2091,7 @@ RMSE: 0.070447     Adj. R2: 0.625198
 </div>
 </div>
 <p><strong>3E.Q1:</strong> Interpret the <code>model3_ff</code> results as clearly and <strong>concisely</strong> as you can.</p>
-<p><em>Response:</em> The implementation of an operational turbine reduces the liberal percentage of a community by 9%. This expectation is statistically significant, meaning it is likely not due to random chance.</p>
+<p><em>Response:</em> The implementation of an operational turbine creates a 9 percentage point drop in liberal voting, compared to what precincts which have not received turbines. This expectation is statistically significant, meaning it is likely not due to random chance.</p>
 <p><strong>3E.Q2:</strong> Why do you think the effect of proposed wind turbines is different from operational wind turbines. Develop your own theory about why incumbent vote share is affected in this way. Use the Stokes (2015) study to inform your response as needed.</p>
 <p><em>Response:</em> Proposed wind turbines are not realized, as in there is no direct effect to the proposal of a turbine. This may lead some to not even know it was proposed. Operational turbines, on the other hand, are hard to miss. The visibility, noise pollution, and construction issues make people more incensed to make a change in their voting behaviors.</p>
 <hr>
